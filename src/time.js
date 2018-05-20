@@ -16,12 +16,14 @@ let time = (function(){
         function updateGame(dt){
             let objects = gamid.graphics.objects;
             let canvasList = gamid.graphics.canvasList;
-            // clear all canvas
+            
             for(let i in canvasList){
+                // clear all canvasList
                 let ctx = canvasList[i].getContext('2d');
                 ctx.clearRect(0, 0, canvasList[i].width, canvasList[i].height);
                 gamid.graphics.setBackgroundColor(canvasList[i], canvasList[i].color);
 
+                // show fps
                 ctx.fillStyle = 'black';
                 ctx.fillText('fps:' + dt + 'ms', 5, 10);
             }

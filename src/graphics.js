@@ -4,8 +4,22 @@ let graphics = (function(){
     let canvasList = [];
     
     // classes
-    class Square {
+
+    class BaseObject {
+        constructor(){}
+
+        update(){
+            throw new Error('You have to implement update method!');
+        }
+
+        newPosition(){
+            throw new Error('You have to implement update method!');
+        }
+    }
+
+    class Square extends BaseObject {
         constructor(canvas, width, height, color){
+            super();
             this.width = width,
             this.height = height
             this.x = 0;
@@ -31,8 +45,7 @@ let graphics = (function(){
     let square = function(canvas, width, height, color='white') {
         let square = new Square(canvas, width, height, color);
         objects.push(square);
-        console.log(objects);
-
+        
         return square;
     }
 
