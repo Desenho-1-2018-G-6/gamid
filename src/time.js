@@ -22,9 +22,9 @@ let time = (function () {
         updateGame(dt) {
             for (let i in this.canvasList) {
                 // clear all canvasList
-                let ctx = this.canvasList[i].getContext('2d');
+                let ctx = this.canvasList[i].element.getContext('2d');
                 ctx.clearRect(0, 0, this.canvasList[i].width, this.canvasList[i].height);
-                gamid.graphics.setBackgroundColor(this.canvasList[i], this.canvasList[i].color);
+                this.canvasList[i].setBackgroundColor(this.canvasList[i].color);
 
                 // show fps
                 ctx.fillStyle = 'black';

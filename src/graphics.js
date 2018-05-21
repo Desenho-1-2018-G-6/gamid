@@ -11,6 +11,7 @@ let graphics = (function(){
             this.height = height;
             this.x = x;
             this.y = y;
+            objects.push(this);
         }
 
         update(){
@@ -30,7 +31,6 @@ let graphics = (function(){
             this.color = color;
             this.canvas = canvas;
             this.controller;
-            objects.push(this);
         }
 
         update(){
@@ -45,35 +45,33 @@ let graphics = (function(){
         }
     }
 
-    // let square = function(canvas, width, height, color='white') {
-    //     let square = new Square(canvas, width, height, color);
-    //     objects.push(square);
-        
-    //     return square;
-    // }
+    class Canvas {
+        constructor(width, height, color){
+            this.element = document.createElement('canvas');
+            this.id ='gamid-canvas';
+            this.height = height;
+            this.width = width;
+            this.color = color;
 
-    let getCanvas = function (width, height) {
-        let canvas = document.createElement('canvas');
-        canvas.id = 'mamid-canvas';
-        canvas.height = height;
-        canvas.width = width;
-        canvas.color = "white";
-        canvasList.push(canvas);
-        return canvas;
+            this.element.id = this.id;
+            this.element.height = this.height;
+            this.element.width = this.width;
+            this.element.color = this.color;
+
+            canvasList.push(this);
+        }
+
+        setBackgroundColor(color){
+            this.color = color;
+            this.element.color = this.color;
+            let ctx = this.element.getContext("2d");
+            ctx.fillStyle = color;
+            ctx.fillRect(0, 0, this.width, this.height);
+        }
     }
-
-    let setBackgroundColor = function(canvas, color) {
-        canvas.color = color;
-        let ctx = canvas.getContext("2d");
-        ctx.fillStyle = color;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
-
 
     return{
-        getCanvas,
-        setBackgroundColor,
+        Canvas,
         Square,
         objects,
         canvasList  
