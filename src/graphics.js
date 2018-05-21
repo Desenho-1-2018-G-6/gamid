@@ -6,7 +6,12 @@ let graphics = (function(){
     // classes
 
     class BaseObject {
-        constructor(){}
+        constructor(width, height, x, y){
+            this.width = width;
+            this.height = height;
+            this.x = x;
+            this.y = y;
+        }
 
         update(){
             throw new Error('You have to implement update method!');
@@ -19,15 +24,13 @@ let graphics = (function(){
 
     class Square extends BaseObject {
         constructor(canvas, width, height, color){
-            super();
-            this.width = width,
-            this.height = height
-            this.x = 0;
-            this.y = 0;
+            super(width, height, 0, 0);
             this.speedX = 0;
             this.speedY = 0;
             this.color = color;
             this.canvas = canvas;
+            this.controller;
+            objects.push(this);
         }
 
         update(){
@@ -42,12 +45,12 @@ let graphics = (function(){
         }
     }
 
-    let square = function(canvas, width, height, color='white') {
-        let square = new Square(canvas, width, height, color);
-        objects.push(square);
+    // let square = function(canvas, width, height, color='white') {
+    //     let square = new Square(canvas, width, height, color);
+    //     objects.push(square);
         
-        return square;
-    }
+    //     return square;
+    // }
 
     let getCanvas = function (width, height) {
         let canvas = document.createElement('canvas');
@@ -64,7 +67,6 @@ let graphics = (function(){
         let ctx = canvas.getContext("2d");
         ctx.fillStyle = color;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
     }
 
 
@@ -72,7 +74,7 @@ let graphics = (function(){
     return{
         getCanvas,
         setBackgroundColor,
-        square,
+        Square,
         objects,
         canvasList  
     }

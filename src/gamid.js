@@ -1,9 +1,9 @@
 let gamid = (function () {
 
     return {
-        graphics,
-        time
+        graphics
     };
 }());
 
-gamid.time.setTime();
+// let timeInstance = new gamid.time.Time();
+// timeInstance.setTime();
