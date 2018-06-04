@@ -6,12 +6,13 @@ let graphics = (function(){
     // classes
 
     class BaseObject {
-        constructor(width, height, x, y){
+        constructor(canvas, width, height, x, y){
             this.width = width;
             this.height = height;
             this.x = x;
             this.y = y;
-            objects.push(this);
+            this.canvas = canvas;
+            this.canvas.objects.push(this);
         }
 
         update(){
@@ -25,11 +26,10 @@ let graphics = (function(){
 
     class Square extends BaseObject {
         constructor(canvas, width, height, color){
-            super(width, height, 0, 0);
+            super(canvas, width, height, 0, 0);
             this.speedX = 0;
             this.speedY = 0;
             this.color = color;
-            this.canvas = canvas;
             this.controller;
         }
 
@@ -52,6 +52,7 @@ let graphics = (function(){
             this.height = height;
             this.width = width;
             this.color = color;
+            this.objects = [];
 
             this.element.id = this.id;
             this.element.height = this.height;
