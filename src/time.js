@@ -26,16 +26,17 @@ let time = (function () {
                 ctx.clearRect(0, 0, this.canvasList[i].width, this.canvasList[i].height);
                 this.canvasList[i].setBackgroundColor(this.canvasList[i].color);
 
+                // move all objects
+                for (let j in this.canvasList[i].objects) {
+                    this.canvasList[i].objects[j].newPosition(dt / 1000); // delta time in seconds
+                    this.canvasList[i].objects[j].update();
+                }
+
                 // show fps
                 ctx.fillStyle = 'black';
                 ctx.fillText('fps:' + parseFloat(1/(dt/1000)).toFixed(2) + 'ms', 5, 10);
             }
 
-            // move all objects
-            for (let i in this.objects) {
-                this.objects[i].newPosition(dt / 1000); // delta time in seconds
-                this.objects[i].update();
-            }
         }
 
     }
