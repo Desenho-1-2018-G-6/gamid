@@ -1,8 +1,8 @@
 let graphics = (function(){
-    
+
     let objects = [];
     let canvasList = [];
-    
+
     // classes
 
     class BaseObject {
@@ -21,6 +21,14 @@ let graphics = (function(){
 
         newPosition(){
             throw new Error('You have to implement update method!');
+        }
+
+        onKeyUp(){
+
+        }
+
+        onKeyDown(){
+          
         }
     }
 
@@ -75,6 +83,7 @@ let graphics = (function(){
         Canvas,
         Square,
         objects,
-        canvasList  
+        canvasList,
+        BaseObject
     }
 }());
