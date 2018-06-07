@@ -1,0 +1,6 @@
+let controller = (function(){
+
+return {
+}
+
+}());
