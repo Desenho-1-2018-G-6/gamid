@@ -29,30 +29,30 @@ let controller = (function(){
       super.onKeyDown();
       console.log("WAAAAAAAAAAAAAA");
     }
-
   }
 
   class Keyboard extends Controller {
       constructor(baseObject, keyList){
           super(baseObject, keyList);
           this.baseObject = baseObject;
+          this.functionList = [];
+          this.createKeysFunction();
 
           document.addEventListener("keydown", () => this.onKeyDown(event));
           document.addEventListener("keyup", () => this.onKeyUp(event));
       }
 
-      onKeyUp(event){
-          super.onKeyUp();
-
-      }
-
-      onKeyDown(event){
-          super.onKeyDown();
+      createKeysFunction(){
+          for(let i = 0; i < this.keyList.length; i++){
+              let func = new Function();
+              this.functionList.push(func);
+          }
       }
   }
 
   return {
-    Controller
+    Controller,
+    Keyboard
   }
 
 }());
