@@ -50,8 +50,7 @@ let controller = (function(){
               `
 
                   for (let i = 0; i < keyList.length; i++){
-
-                      if (event.key == keyList[i]){
+                      if (event.keyCode == keyList[i]){
                           functionList[i];
                       }
                   }
