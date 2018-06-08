@@ -6,35 +6,33 @@ let graphics = (function(){
     // classes
 
     class BaseObject {
-        constructor(canvas, width, height, x, y){
+        constructor(width, height, x, y){
             this.width = width;
             this.height = height;
             this.x = x;
             this.y = y;
-            this.canvas = canvas;
-            this.canvas.objects.push(this);
         }
 
         update(){
-            throw new Error('You have to implement update method!');
+            // throw new Error('You have to implement update method!');
         }
 
         newPosition(){
-            throw new Error('You have to implement update method!');
+            // throw new Error('You have to implement update method!');
         }
 
         onKeyUp(){
-
+          console.log('onKeyUppei');
         }
 
         onKeyDown(){
-          
+          console.log('onKeyDown');
         }
     }
 
     class Square extends BaseObject {
-        constructor(canvas, width, height, color){
-            super(canvas, width, height, 0, 0);
+        constructor(width, height, color){
+            super(width, height, 0, 0);
             this.speedX = 0;
             this.speedY = 0;
             this.color = color;
@@ -68,6 +66,10 @@ let graphics = (function(){
             this.element.color = this.color;
 
             canvasList.push(this);
+        }
+
+        addObject(baseObject){
+          this.objects.push(baseObject);
         }
 
         setBackgroundColor(color){
