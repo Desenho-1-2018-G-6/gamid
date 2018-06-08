@@ -3,7 +3,7 @@ let canvas = canvasInstance.element;
 // gamid.graphics.setBackgroundColor(canvas, 'red');
 
 let square = new gamid.graphics.Square(50, 50, 'blue');
-// canvasInstance.addObject(square);
+canvasInstance.addObject(square);
 square.speedX = 20;
 square.speedY = 20;
 

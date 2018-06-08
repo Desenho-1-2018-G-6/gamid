@@ -1,14 +1,14 @@
 class BaseObjectDecorator extends graphics.BaseObject {
   constructor(baseObject){
-    super(baseObject);
+    super(baseObject.width, baseObject.height, baseObject.x, baseObject.y);
   }
 
   onKeyUp(){
-    this.baseObject.onKeyUp();
+    super.onKeyUp();
   }
 
   onKeyDown(){
-    this.baseObject.onKeyDown();
+    super.onKeyDown();
   }
 }
 
@@ -21,12 +21,13 @@ let controller = (function(){
     }
 
     onKeyUp(){
-      this.baseObject.onKeyUp();
+      super.onKeyUp();
       console.log("WOOOOOOOOOOO");
     }
 
     onKeyDown(){
-
+      super.onKeyDown();
+      console.log("WAAAAAAAAAAAAAA");
     }
 
   }
