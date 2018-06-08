@@ -22,7 +22,7 @@ let controller = (function(){
 
     onKeyUp(){
       super.onKeyUp();
-      console.log("WOOOOOOOOOOO");
+      // console.log("WOOOOOOOOOOO");
     }
 
     onKeyDown(){
@@ -37,14 +37,36 @@ let controller = (function(){
           this.baseObject = baseObject;
           this.functionList = [];
           this.createKeysFunction();
+          this.createOnKeyDownFunction();
 
-          document.addEventListener("keydown", () => this.onKeyDown(event));
           document.addEventListener("keyup", () => this.onKeyUp(event));
       }
 
+      createOnKeyDownFunction(){
+          let onKeyDown = new Function(
+              'event',
+              'keyList',
+              'functionList',
+              `
+
+                  for (let i = 0; i < keyList.length; i++){
+
+                      if (event.key == keyList[i]){
+                          functionList[i];
+                      }
+                  }
+              `
+          );
+
+          document.addEventListener("keydown", () => onKeyDown(event,
+                                                               this.keyList,
+                                                               this.functionList));
+      }
+
       createKeysFunction(){
-          for(let i = 0; i < this.keyList.length; i++){
+          for (let i = 0; i < this.keyList.length; i++){
               let func = new Function();
+
               this.functionList.push(func);
           }
       }
