@@ -32,7 +32,24 @@ let controller = (function(){
 
   }
 
+  class Keyboard extends Controller {
+      constructor(baseObject, keyList){
+          super(baseObject, keyList);
+          this.baseObject = baseObject;
 
+          document.addEventListener("keydown", () => this.onKeyDown(event));
+          document.addEventListener("keyup", () => this.onKeyUp(event));
+      }
+
+      onKeyUp(event){
+          super.onKeyUp();
+
+      }
+
+      onKeyDown(event){
+          super.onKeyDown();
+      }
+  }
 
   return {
     Controller
