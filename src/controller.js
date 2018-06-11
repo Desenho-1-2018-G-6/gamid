@@ -69,7 +69,7 @@ let controller = (function(){
         }
       }
 
-      setOnKeyUpFunction(key, func){
+      setOnKeyUp(key, func){
         let counter = false;
         for(let i in this.functionList){
           if(key == this.functionList[i].key){
@@ -83,7 +83,7 @@ let controller = (function(){
         return "Function changed";
       }
 
-      setOnKeyDownFunction(key, func){
+      setOnKeyDown(key, func){
         let counter = false;
         for(let i in this.functionList){
           if(key == this.functionList[i].key){
@@ -96,6 +96,7 @@ let controller = (function(){
         }
         return "Function changed";
       }
+      
   }
 
   return {
