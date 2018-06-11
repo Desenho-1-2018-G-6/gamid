@@ -18,6 +18,8 @@ let controller = (function () {
     constructor(baseObject, keyList) {
       super(baseObject);
       this.keyList = keyList;
+      this.functionList = [];
+      this.createKeysFunction();
     }
 
     createKeysFunction() {
@@ -31,11 +33,27 @@ let controller = (function () {
     }
 
     addKey(key,onKeyDown=function(){}, onKeyUp=function(){}){
+
+      let hasKey = false;
+
+      for(let i = 0; i < this.functionList.length; i++){
+        if(key == this.functionList[i].key){
+          hasKey = true;
+          i = this.functionList.length;
+        }
+      }
+
+      if(hasKey){
+        return "Key already on the list."
+      }
+
       let obj = new Object();
       obj.key = key;
       obj.onKeyUpFunc = onKeyUp;
       obj.onKeyDownFunc = onKeyDown;
       this.functionList.push(obj);
+
+      return "Key has been created."
     }
 
     setOnKeyUp(key, func) {
@@ -81,8 +99,7 @@ let controller = (function () {
     constructor(baseObject, keyList) {
       super(baseObject, keyList);
       this.baseObject = baseObject;
-      this.functionList = [];
-      this.createKeysFunction();
+      // this.functionList = [];
       document.addEventListener("keydown", () => this.onKeyDown(event, this.functionList));
       document.addEventListener("keyup", () => this.onKeyUp(event, this.functionList));
     }

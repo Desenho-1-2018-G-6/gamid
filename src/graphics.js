@@ -3,8 +3,6 @@ let graphics = (function(){
     let objects = [];
     let canvasList = [];
 
-    // classes
-
     class BaseObject {
         constructor(width, height, x, y){
             this.width = width;
@@ -14,11 +12,11 @@ let graphics = (function(){
         }
 
         update(){
-            // throw new Error('You have to implement update method!');
+            throw new Error('You have to implement update method!');
         }
 
         newPosition(){
-            // throw new Error('You have to implement update method!');
+            throw new Error('You have to implement update method!');
         }
 
         onKeyUp(){
@@ -36,7 +34,6 @@ let graphics = (function(){
             this.speedX = 0;
             this.speedY = 0;
             this.color = color;
-            this.controller;
         }
 
         update(){
