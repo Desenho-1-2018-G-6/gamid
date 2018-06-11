@@ -37,37 +37,36 @@ let controller = (function(){
           this.baseObject = baseObject;
           this.functionList = [];
           this.createKeysFunction();
-          this.createOnKeyDownFunction();
-
-          document.addEventListener("keyup", () => this.onKeyUp(event));
-      }
-
-      createOnKeyDownFunction(){
-          let onKeyDown = new Function(
-              'event',
-              'keyList',
-              'functionList',
-              `
-
-                  for (let i = 0; i < keyList.length; i++){
-                      if (event.keyCode == keyList[i]){
-                          functionList[i];
-                      }
-                  }
-              `
-          );
-
-          document.addEventListener("keydown", () => onKeyDown(event,
-                                                               this.keyList,
-                                                               this.functionList));
       }
 
       createKeysFunction(){
           for (let i = 0; i < this.keyList.length; i++){
-              let func = new Function();
-
-              this.functionList.push(func);
+              let obj = new Object();
+              obj.key = this.keyList[i];
+              obj.onKeyUpFunc = function(){};
+              obj.onKeyDownFunc = function(){};
+              this.functionList.push(obj);
           }
+
+          document.addEventListener("keydown", () => this.onKeyDown(event, this.functionList));
+          document.addEventListener("keyup", () => this.onKeyUp(event, this.functionList));
+      }
+
+
+      onKeyDown(event, functionList){
+        for(let i in functionList){
+          if(event.keyCode == functionList[i].key){
+              functionList[i].onKeyDownFunc();
+          }
+        }
+      }
+
+      onKeyUp(event, functionList){
+        for(let i in functionList){
+          if(event.keyCode == functionList[i].key){
+              functionList[i].onKeyUpFunc();
+          }
+        }
       }
   }
 
