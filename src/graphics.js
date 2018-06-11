@@ -29,8 +29,8 @@ let graphics = (function(){
     }
 
     class Square extends BaseObject {
-        constructor(width, height, color){
-            super(width, height, 0, 0);
+        constructor(width, height, x, y, color){
+            super(width, height, x, y);
             this.speedX = 0;
             this.speedY = 0;
             this.color = color;
