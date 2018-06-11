@@ -100,8 +100,8 @@ let controller = (function () {
       super(baseObject, keyList);
       this.baseObject = baseObject;
       // this.functionList = [];
-      document.addEventListener("keydown", () => this.onKeyDown(event, this.functionList));
-      document.addEventListener("keyup", () => this.onKeyUp(event, this.functionList));
+      document.addEventListener("keydown", (event) => this.onKeyDown(event, this.functionList));
+      document.addEventListener("keyup", (event) => this.onKeyUp(event, this.functionList));
     }
 
     onKeyDown(event, functionList) {
