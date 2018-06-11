@@ -2,8 +2,7 @@ let time = (function () {
     class Time {
         constructor() {
             this.lastUpdate = 0;
-            this.objects = gamid.graphics.objects;
-            this.canvasList = gamid.graphics.canvasList;
+            this.graphics = gamid.graphics;
         }
 
         setTime() {
@@ -20,16 +19,16 @@ let time = (function () {
         }
 
         updateGame(dt) {
-            for (let i in this.canvasList) {
+            for (let i in this.graphics.canvasList) {
                 // clear all canvasList
-                let ctx = this.canvasList[i].element.getContext('2d');
-                ctx.clearRect(0, 0, this.canvasList[i].width, this.canvasList[i].height);
-                this.canvasList[i].setBackgroundColor(this.canvasList[i].color);
+                let ctx = this.graphics.canvasList[i].element.getContext('2d');
+                ctx.clearRect(0, 0, this.graphics.canvasList[i].width, this.graphics.canvasList[i].height);
+                this.graphics.canvasList[i].setBackgroundColor(this.graphics.canvasList[i].color);
 
                 // move all objects
-                for (let j in this.canvasList[i].objects) {
-                    this.canvasList[i].objects[j].newPosition(dt / 1000); // delta time in seconds
-                    this.canvasList[i].objects[j].update();
+                for (let j in this.graphics.canvasList[i].objects) {
+                    this.graphics.canvasList[i].objects[j].newPosition(dt / 1000); // delta time in seconds
+                    this.graphics.canvasList[i].objects[j].update();
                 }
 
                 // show fps
