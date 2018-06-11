@@ -68,6 +68,34 @@ let controller = (function(){
           }
         }
       }
+
+      setOnKeyUpFunction(key, func){
+        let counter = false;
+        for(let i in this.functionList){
+          if(key == this.functionList[i].key){
+            this.functionList[i].onKeyUpFunc = func;
+            counter = true;
+          }
+        }
+        if(!counter){
+          return "Could not find key";
+        }
+        return "Function changed";
+      }
+
+      setOnKeyDownFunction(key, func){
+        let counter = false;
+        for(let i in this.functionList){
+          if(key == this.functionList[i].key){
+            this.functionList[i].onKeyDownFunc = func;
+            counter = true;
+          }
+        }
+        if(!counter){
+          return "Could not find key";
+        }
+        return "Function changed";
+      }
   }
 
   return {
