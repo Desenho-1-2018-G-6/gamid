@@ -28,7 +28,14 @@ let controller = (function () {
         obj.onKeyDownFunc = function () { };
         this.functionList.push(obj);
       }
+    }
 
+    addKey(key,onKeyDown=function(){}, onKeyUp=function(){}){
+      let obj = new Object();
+      obj.key = key;
+      obj.onKeyUpFunc = onKeyUp;
+      obj.onKeyDownFunc = onKeyDown;
+      this.functionList.push(obj);
     }
 
     setOnKeyUp(key, func) {
