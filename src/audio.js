@@ -21,6 +21,22 @@ let audio = (function () {
     }
   }
 
+  play(soundName){
+    for(let i in this.soundList){
+      if(this.soundList[i].attributes.src.nodeValue === soundName){
+        this.soundList[i].play();
+      }
+    }
+  }
+
+  pause(soundName){
+    for(let i in this.soundList){
+      if(this.soundList[i].attributes.src.nodeValue === soundName){
+        this.soundList[i].pause();
+      }
+    }
+  }
+
   return {
     Audio
   }
