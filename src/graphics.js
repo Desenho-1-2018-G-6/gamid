@@ -20,11 +20,11 @@ let graphics = (function(){
         }
 
         onKeyUp(){
-          console.log('onKeyUppei');
+          // console.log('onKeyUp');
         }
 
         onKeyDown(){
-          console.log('onKeyDown');
+          // console.log('onKeyDown');
         }
     }
 

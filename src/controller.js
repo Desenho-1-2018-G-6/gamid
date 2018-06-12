@@ -1,14 +1,23 @@
 class BaseObjectDecorator extends graphics.BaseObject {
   constructor(baseObject) {
     super(baseObject.width, baseObject.height, baseObject.x, baseObject.y);
+    this.decoratedObject = baseObject;
+  }
+
+  update() {
+    this.decoratedObject.update();
+  }
+
+  newPosition(dt) {
+    this.decoratedObject.newPosition(dt);
   }
 
   onKeyUp() {
-    super.onKeyUp();
+    this.decoratedObject.onKeyUp();
   }
 
   onKeyDown() {
-    super.onKeyDown();
+    this.decoratedObject.onKeyDown();
   }
 }
 
@@ -86,25 +95,26 @@ let controller = (function () {
 
     onKeyUp() {
       super.onKeyUp();
-      // console.log("WOOOOOOOOOOO");
+      // console.log("Controller");
     }
 
     onKeyDown() {
       super.onKeyDown();
-      console.log("WAAAAAAAAAAAAAA");
+      // console.log("Controller");
     }
   }
 
   class Keyboard extends Controller {
     constructor(baseObject, keyList) {
       super(baseObject, keyList);
-      this.baseObject = baseObject;
       // this.functionList = [];
       document.addEventListener("keydown", (event) => this.onKeyDown(event, this.functionList));
       document.addEventListener("keyup", (event) => this.onKeyUp(event, this.functionList));
     }
 
     onKeyDown(event, functionList) {
+      super.onKeyDown();
+      // console.log("Keyboard");
       for (let i in functionList) {
         if (event.keyCode == functionList[i].key) {
           functionList[i].onKeyDownFunc();
@@ -113,6 +123,8 @@ let controller = (function () {
     }
 
     onKeyUp(event, functionList) {
+      super.onKeyUp();
+      // console.log("Keyboard");
       for (let i in functionList) {
         if (event.keyCode == functionList[i].key) {
           functionList[i].onKeyUpFunc();
