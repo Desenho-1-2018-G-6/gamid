@@ -35,6 +35,15 @@ let audio = (function () {
         }
       }
     }
+
+    loop(soundName){
+        for(let i in this.soundList){
+          if(this.soundList[i].attributes.src.nodeValue === soundName){
+            this.soundList[i].loop = true;
+            this.soundList[i].play();
+          }
+        }
+    }
   }
 
   return {
