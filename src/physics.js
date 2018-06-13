@@ -33,6 +33,27 @@ let physics = (function() {
     constructor(baseObject, objectList){
       super(baseObject, objectList);
       this.personalObjectList = [];
+      this.buildDistanceList();
+    }
+
+    buildDistanceList(){
+      this.personalObjectList = [];
+
+      for(let i = 0; i < this.objectList.length; i++){
+        for(let j = i+1; j < this.objectList.length; j++){
+          let obj = new Object();
+          obj.first = this.objectList[i].decoratedObject;
+          obj.second = this.objectList[j].decoratedObject;
+          obj.distance = (
+            this.getDistance(this.objectList[i].decoratedObject,
+            this.objectList[j].decoratedObject)
+          );
+          this.personalObjectList.push(obj);
+        }
+      }
+
+      console.log(this.personalObjectList);
+
     }
 
     getDistance(rec1, rec2){
