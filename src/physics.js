@@ -1,18 +1,17 @@
-let physics = (
+let physics = (function() {
 
   class Physics extends BaseObjectDecorator {
     constructor(baseObject, objectList){
       super(baseObject);
       this.baseObject = baseObject;
       this.objectList = objectList;
-      this.personalObjectList = [];
     }
 
     buildObjectList(){
       // Method to overwrite
     }
 
-    getObjectDistance(referenceBaseObject, baseObjectInList){
+    getDistance(referenceBaseObject, baseObjectInList){
       // Method  to overwrite
     }
 
@@ -30,8 +29,45 @@ let physics = (
 
   }
 
-  return {
-    physics
+  class SquareCollision extends Physics {
+    constructor(baseObject, objectList){
+      super(baseObject, objectList);
+      this.personalObjectList = [];
+    }
+
+    getDistance(rec1, rec2){
+      let x1, x2, y1, y2;
+      let w, h;
+
+      if (rec1.x > rec2.x) {
+         x1 = rec2.x;
+         w = rec2.width;
+         x2 = rec1.x;
+      } else {
+         x1 = rec1.x;
+         w = rec1.width;
+         x2 = rec2.x;
+      }
+      if (rec1.y > rec2.y) {
+         y1 = rec2.y;
+         h = rec2.height;
+         y2 = rec1.y;
+      } else {
+         y1 = rec1.y;
+         h = rec1.height;
+         y2 = rec2.y;
+      }
+      let a = Math.max(0, x2 - x1 - w);
+      let b = Math.max(0, y2 - y1 - h);
+
+      return Math.sqrt(a*a+b*b);
+    }
+
   }
 
-);
+  return {
+    Physics,
+    SquareCollision
+  }
+
+}());
