@@ -72,12 +72,12 @@ let physics = (function() {
 
 
       for(let i in this.buildList){
-        if(this.buildList[i].decoratedObject.decoratedObject !== this.baseObject.decoratedObject){
-          if(this.getDistance(this.buildList[i].decoratedObject.decoratedObject, this.baseObject.decoratedObject) <= 1){
+        if(this.buildList[i].baseObject !== this.baseObject){
+          if(this.getDistance(this.buildList[i].baseObject, this.baseObject) <= 1){
             // this.buildList[i].decoratedObject.decoratedObject.speedX = -this.buildList[i].decoratedObject.decoratedObject.speedX;
             // this.buildList[i].decoratedObject.decoratedObject.speedY = -this.buildList[i].decoratedObject.decoratedObject.speedY;
-            this.baseObject.decoratedObject.speedX *= -1;
-            this.baseObject.decoratedObject.speedY *= -1;
+            this.baseObject.speedX *= -1;
+            this.baseObject.speedY *= -1;
           }
         }
 
