@@ -68,9 +68,6 @@ let physics = (function() {
     }
 
     resolveObjectCollision(){
-
-
-
       for(let i in this.buildList){
         if(this.buildList[i].baseObject !== this.baseObject){
           if(this.getDistance(this.buildList[i].baseObject, this.baseObject) <= 1){
@@ -80,7 +77,23 @@ let physics = (function() {
             this.baseObject.speedY *= -1;
           }
         }
+      }
+    }
 
+    resolveBorderCollision() {
+      for(let i in this.buildList){
+        let x = this.buildList[i].baseObject.x;
+        let y = this.buildList[i].baseObject.y;
+        let width = this.buildList[i].baseObject.width;
+        let height = this.buildList[i].baseObject.height;
+
+        if(x < 0
+          || y < 0
+          || x > (graphics.canvasList[0].width - width)
+          || y > (graphics.canvasList[0].height - height)){
+              this.baseObject.speedX *= -1;
+              this.baseObject.speedY *= -1;
+        }
       }
     }
   }
