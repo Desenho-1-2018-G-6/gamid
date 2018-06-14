@@ -1,10 +1,10 @@
 let physics = (function() {
 
+  let collidedObjectList = []
+
   class Physics extends BaseObjectDecorator {
-    constructor(baseObject, objectList){
+    constructor(baseObject){
       super(baseObject);
-      this.baseObject = baseObject;
-      this.objectList = objectList;
     }
 
     buildObjectList(){
@@ -30,30 +30,13 @@ let physics = (function() {
   }
 
   class SquareCollision extends Physics {
-    constructor(baseObject, objectList){
-      super(baseObject, objectList);
-      this.personalObjectList = [];
-      this.buildDistanceList();
-    }
-
-    buildDistanceList(){
-      this.personalObjectList = [];
-
-      for(let i = 0; i < this.objectList.length; i++){
-        for(let j = i+1; j < this.objectList.length; j++){
-          let obj = new Object();
-          obj.first = this.objectList[i].decoratedObject;
-          obj.second = this.objectList[j].decoratedObject;
-          obj.distance = (
-            this.getDistance(this.objectList[i].decoratedObject,
-            this.objectList[j].decoratedObject)
-          );
-          this.personalObjectList.push(obj);
-        }
-      }
-
-      console.log(this.personalObjectList);
-
+    constructor(baseObject){
+      super(baseObject);
+      this.baseObject = baseObject;
+      // graphics.collidableObjects.push(baseObject);
+      console.log(graphics);
+      graphics.collidableObjects.push(baseObject);
+      this.buildList = graphics.collidableObjects;
     }
 
     getDistance(rec1, rec2){
@@ -84,11 +67,27 @@ let physics = (function() {
       return Math.sqrt(a*a+b*b);
     }
 
+    resolveObjectCollision(){
+
+      console.log(this.buildList[0]);
+
+      for(let i in this.buildList){
+        if(this.buildList[i].decoratedObject !== this.baseObject.decoratedObject){
+          if(this.getDistance(this.buildList[i].decoratedObject, this.baseObject.decoratedObject) <= 0){
+            this.buildList[i].decoratedObject.speedX = -this.buildList[i].decoratedObject.speedX;
+            this.buildList[i].decoratedObject.speedY = -this.buildList[i].decoratedObject.speedY;
+          }
+        }
+
+      }
+    }
   }
 
   return {
     Physics,
-    SquareCollision
+    SquareCollision,
+    collidedObjectList
+    // this.objectList
   }
 
 }());

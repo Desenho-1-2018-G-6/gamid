@@ -9,6 +9,7 @@ let square = new gamid.controller.Keyboard(
 		[87, 65, 83, 68]
 );
 
+
 let square2 = new gamid.controller.Keyboard(
 		new gamid.graphics.Square(50, 50, 150, 150, 'red'),
 		[87, 65, 83, 68]
@@ -52,11 +53,11 @@ square2.setOnKeyDown(87, function(){
 });
 
 // a.setOnKeyUp(83, function(){square.speedY = 0});
+
 square2.setOnKeyDown(83, function(){
 		square2.decoratedObject.speedY = 50;
 		square2.decoratedObject.speedX = 0;
 });
-
 // a.setOnKeyUp(65, function(){square.speedX = 0});
 square2.setOnKeyDown(65, function(){
 		square2.decoratedObject.speedX = -50;
@@ -68,7 +69,5 @@ square2.setOnKeyDown(68, function(){
 		square2.decoratedObject.speedX = 50;
 		square2.decoratedObject.speedY = 0;
 });
-
-
 
 document.body.appendChild(canvas);

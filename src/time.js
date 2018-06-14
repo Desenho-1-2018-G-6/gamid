@@ -3,6 +3,7 @@ let time = (function () {
         constructor() {
             this.lastUpdate = 0;
             this.graphics = gamid.graphics;
+            this.physics = gamid.physics;
         }
 
         setTime() {
@@ -41,5 +42,5 @@ let time = (function () {
     }
 
     new Time().setTime();
-    
+
 }());

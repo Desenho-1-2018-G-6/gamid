@@ -2,6 +2,7 @@ let graphics = (function(){
 
     let objects = [];
     let canvasList = [];
+    let collidableObjects = [];
 
     class BaseObject {
         constructor(width, height, x, y){
@@ -83,6 +84,7 @@ let graphics = (function(){
         Square,
         objects,
         canvasList,
-        BaseObject
+        BaseObject,
+        collidableObjects
     }
 }());
