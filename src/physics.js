@@ -19,8 +19,21 @@ let physics = (function() {
       // Method  to overwrite
     }
 
-    resolveBorderCollision(){
-      // Method  to overwrite
+    resolveBorderCollision() {
+      for(let i in this.buildList){
+        let x = this.buildList[i].baseObject.x;
+        let y = this.buildList[i].baseObject.y;
+        let width = this.buildList[i].baseObject.width;
+        let height = this.buildList[i].baseObject.height;
+
+        if(x < 0
+          || y < 0
+          || x > (graphics.canvasList[0].width - width)
+          || y > (graphics.canvasList[0].height - height)){
+              this.baseObject.speedX *= -1;
+              this.baseObject.speedY *= -1;
+        }
+      }
     }
 
     resolveGravity(){
@@ -76,23 +89,6 @@ let physics = (function() {
             this.baseObject.speedX *= -1;
             this.baseObject.speedY *= -1;
           }
-        }
-      }
-    }
-
-    resolveBorderCollision() {
-      for(let i in this.buildList){
-        let x = this.buildList[i].baseObject.x;
-        let y = this.buildList[i].baseObject.y;
-        let width = this.buildList[i].baseObject.width;
-        let height = this.buildList[i].baseObject.height;
-
-        if(x < 0
-          || y < 0
-          || x > (graphics.canvasList[0].width - width)
-          || y > (graphics.canvasList[0].height - height)){
-              this.baseObject.speedX *= -1;
-              this.baseObject.speedY *= -1;
         }
       }
     }
