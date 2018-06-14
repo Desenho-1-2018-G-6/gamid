@@ -3,7 +3,8 @@ let gamid = (function () {
     return {
         graphics,
         controller,
-        audio
+        audio,
+        physics
     };
 }());
 
