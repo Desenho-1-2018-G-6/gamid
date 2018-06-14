@@ -5,16 +5,14 @@ let canvas = canvasInstance.element;
 // square.speedX = 20;
 // square.speedY = 20;
 let square = new gamid.controller.Keyboard(
-		new gamid.graphics.Square(50, 50, 0, 0, 'blue'),
+		new gamid.graphics.Square(50, 50, 0, 0, 1, 'blue'),
 		[87, 65, 83, 68]
 );
-
-
 let square2 = new gamid.controller.Keyboard(
-		new gamid.graphics.Square(50, 50, 150, 150, 'red'),
+		new gamid.graphics.Square(50, 50, 150, 150, 1, 'red'),
 		[87, 65, 83, 68]
 );
-
+//
 canvasInstance.addObject(square);
 canvasInstance.addObject(square2);
 

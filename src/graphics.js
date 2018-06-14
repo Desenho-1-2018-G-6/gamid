@@ -5,11 +5,12 @@ let graphics = (function(){
     let collidableObjects = [];
 
     class BaseObject {
-        constructor(width, height, x, y){
+        constructor(width, height, x, y, mass){
             this.width = width;
             this.height = height;
             this.x = x;
             this.y = y;
+            this.mass = mass;
         }
 
         update(){
@@ -30,10 +31,11 @@ let graphics = (function(){
     }
 
     class Square extends BaseObject {
-        constructor(width, height, x, y, color){
+        constructor(width, height, x, y, mass, color){
             super(width, height, x, y);
             this.speedX = 0;
             this.speedY = 0;
+            this.mass = mass;
             this.color = color;
         }
 
@@ -56,7 +58,7 @@ let graphics = (function(){
             this.height = height;
             this.width = width;
             this.color = color;
-            this.objects = [];
+            // this.objects = [];
 
             this.element.id = this.id;
             this.element.height = this.height;
@@ -67,7 +69,7 @@ let graphics = (function(){
         }
 
         addObject(baseObject){
-          this.objects.push(baseObject);
+          graphics.objects.push(baseObject);
         }
 
         setBackgroundColor(color){

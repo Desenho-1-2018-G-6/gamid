@@ -9,7 +9,7 @@ let time = (function () {
         setTime() {
             let that = this;
             this.lastUpdate = Date.now();
-            setInterval(() => this.loop(), 16.6667);
+            setInterval(() => this.loop(), 2.08335);// 8.3334);//16.6667);
         }
 
         loop() {
@@ -27,9 +27,15 @@ let time = (function () {
                 this.graphics.canvasList[i].setBackgroundColor(this.graphics.canvasList[i].color);
 
                 // move all objects
-                for (let j in this.graphics.canvasList[i].objects) {
-                    this.graphics.canvasList[i].objects[j].newPosition(dt / 1000); // delta time in seconds
-                    this.graphics.canvasList[i].objects[j].update();
+                for (let j in this.graphics.objects) {
+                    // console.log(this.graphics.objects)
+                    this.graphics.objects[j].newPosition(dt / 1000); // delta time in seconds
+                    this.graphics.objects[j].update();
+                    // console.log(this.graphics.objects);
+                }
+
+                for(let z in this.graphics.collidableObjects){
+                  this.graphics.collidableObjects[z].resolveObjectCollision();
                 }
 
                 // show fps
