@@ -35,7 +35,7 @@ let physics = (function() {
       this.baseObject = baseObject;
       // graphics.collidableObjects.push(baseObject);
       console.log(graphics);
-      graphics.collidableObjects.push(baseObject);
+      graphics.collidableObjects.push(this);
       this.buildList = graphics.collidableObjects;
     }
 
@@ -69,13 +69,15 @@ let physics = (function() {
 
     resolveObjectCollision(){
 
-      console.log(this.buildList[0]);
+
 
       for(let i in this.buildList){
-        if(this.buildList[i].decoratedObject !== this.baseObject.decoratedObject){
-          if(this.getDistance(this.buildList[i].decoratedObject, this.baseObject.decoratedObject) <= 0){
-            this.buildList[i].decoratedObject.speedX = -this.buildList[i].decoratedObject.speedX;
-            this.buildList[i].decoratedObject.speedY = -this.buildList[i].decoratedObject.speedY;
+        if(this.buildList[i].decoratedObject.decoratedObject !== this.baseObject.decoratedObject){
+          if(this.getDistance(this.buildList[i].decoratedObject.decoratedObject, this.baseObject.decoratedObject) <= 1){
+            // this.buildList[i].decoratedObject.decoratedObject.speedX = -this.buildList[i].decoratedObject.decoratedObject.speedX;
+            // this.buildList[i].decoratedObject.decoratedObject.speedY = -this.buildList[i].decoratedObject.decoratedObject.speedY;
+            this.baseObject.decoratedObject.speedX *= -1;
+            this.baseObject.decoratedObject.speedY *= -1;
           }
         }
 
