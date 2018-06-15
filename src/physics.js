@@ -45,11 +45,9 @@ let physics = (function() {
 
                 const velocity1 = { x: boSpeedX * (boMass - blMass) / (boMass + blMass) + blSpeedX * 2 * blMass / (boMass + blMass),
                                     y: boSpeedY * (boMass - blMass) / (boMass + blMass) + blSpeedY * 2 * blMass / (boMass + blMass)};
-                const velocity2 = { x: blSpeedX * (boMass - blMass) / (boMass + blMass) + boSpeedX * 2 * blMass / (boMass + blMass),
-                                    y: blSpeedY * (boMass - blMass) / (boMass + blMass) + boSpeedY * 2 * blMass / (boMass + blMass)};
+                const velocity2 = { x: blSpeedX * (blMass - boMass) / (boMass + blMass) + boSpeedX * 2 * boMass / (boMass + blMass),
+                                    y: blSpeedY * (blMass - boMass) / (boMass + blMass) + boSpeedY * 2 * boMass / (boMass + blMass)};
 
-
-                // console.log(velocity2);
                 actual.speedX = velocity1.x;
                 compared.speedX = velocity2.x;
 
