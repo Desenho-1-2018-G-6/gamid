@@ -35,7 +35,7 @@ let time = (function () {
                 }
 
                 for(let z in this.graphics.collidableObjects){
-                  this.graphics.collidableObjects[z].resolveObjectCollision();
+                  this.graphics.collidableObjects[z].checkDistance();
                   this.graphics.collidableObjects[z].resolveBorderCollision();
                 }
 
