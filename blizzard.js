@@ -2,7 +2,7 @@ let canvasInstance = new gamid.graphics.Canvas(800, 800, 'darkgreen');
 let canvas = canvasInstance.element;
 // gamid.graphics.setBackgroundColor(canvas, 'red');
 
-for (let i = 0; i < 10000; i++){
+for (let i = 0; i < 100; i++){
     // let abc=['blue', 'red', 'yellow', 'green', 'gray']
     let xxx = Math.random()*800
     let yyy = Math.random()*800
@@ -16,8 +16,8 @@ for (let i = 0; i < 10000; i++){
     // FIXME DÁ PRA CRIAR UM OBJETO SQUARE SEM UMA DAS POSIÇÕES X E Y (CORRIJAM) (OU É PQ FICA SEM COR, SEI LÁ)
     // let square = new gamid.graphics.Square(2, 2, Math.random()*800, Math.random()*800, abc[Math.floor(Math.random()*abc.length)]);
 
-    let square = new gamid.graphics.Square(3, 3, xxx, yyy, abc[Math.floor(Math.random()*abc.length)]);
-
+    let square = new gamid.graphics.Square(30, 30, xxx, yyy, 1, abc[Math.floor(Math.random()*abc.length)]);
+    let squarecollision = new gamid.physics.SquareCollision(square);
 
     a = new gamid.controller.Keyboard(square, [87, 65, 83, 68, 73, 74, 75, 76]);
      // = new gamid.controller.Keyboard(square, [73, 74, 75, 76]);
