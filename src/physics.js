@@ -25,7 +25,6 @@ let physics = (function() {
       let b = Math.max(0, y2 - y1 - h);
 
       return Math.sqrt((a * a) + (b * b));
-
     }
 
     function resolveObjectCollision(actual, compared){
@@ -56,8 +55,6 @@ let physics = (function() {
         }
     }
 
-
-
   class Physics extends BaseObjectDecorator {
     constructor(baseObject){
       super(baseObject);
@@ -76,22 +73,18 @@ let physics = (function() {
     }
 
     resolveBorderCollision() {
-        for(let i in this.buildList){
-            if(this.buildList[i].baseObject !== this.baseObject){
-                let x = this.buildList[i].baseObject.x;
-                let y = this.buildList[i].baseObject.y;
-                let width = this.buildList[i].baseObject.width;
-                let height = this.buildList[i].baseObject.height;
+                let x = this.baseObject.x;
+                let y = this.baseObject.y;
+                let width = this.baseObject.width;
+                let height = this.baseObject.height;
 
                 if(x < 0
                   || y < 0
                   || x > (graphics.canvasList[0].width - width)
                   || y > (graphics.canvasList[0].height - height)){
-                      this.buildList[i].decoratedObject.speedX *= -1;
-                      this.buildList[i].decoratedObject.speedY *= -1;
+                      this.baseObject.speedX *= -1;
+                      this.baseObject.speedY *= -1;
                 }
-            }
-        }
     }
 
     resolveGravity(){
@@ -116,7 +109,6 @@ let physics = (function() {
             }
         }
     }
-
 }
 
   return {
@@ -125,5 +117,4 @@ let physics = (function() {
     resolveObjectCollision,
     getDistance
   }
-
 }());
