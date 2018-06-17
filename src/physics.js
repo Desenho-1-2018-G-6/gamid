@@ -58,19 +58,18 @@ let physics = (function() {
   class Physics extends BaseObjectDecorator {
     constructor(baseObject){
       super(baseObject);
+      this.hasCollision = true; //boolean to resolve if object is collidable or not
     }
 
-    buildObjectList(){
+    beforeCollision(){
       // Method to overwrite
     }
 
-    getDistance(referenceBaseObject, baseObjectInList){
+    afterCollision(referenceBaseObject, baseObjectInList){
       // Method  to overwrite
     }
 
-    resolveObjectCollision(){
-      // Method  to overwrite
-    }
+   
 
     resolveBorderCollision() {
                 let x = this.baseObject.x;
@@ -104,8 +103,12 @@ let physics = (function() {
     checkDistance(){
         for(let i in this.buildList){
             if (this.baseObject === this.buildList[i].baseObject) continue;
-            if(getDistance(this.baseObject, this.buildList[i].baseObject) <=1) {
-                resolveObjectCollision(this.baseObject, this.buildList[i].baseObject);
+              if(getDistance(this.baseObject, this.buildList[i].baseObject) <=1) {
+                if(!this.hasCollision || !this.buildList[i].hasCollision){
+                  // do nothing
+                }else{ 
+                  resolveObjectCollision(this.baseObject, this.buildList[i].baseObject);
+                }
             }
         }
     }
