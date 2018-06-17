@@ -1,7 +1,7 @@
 let graphics = (function(){
 
     let objects = [];
-    let canvasList = [];
+    let canvas = new Object();
     let collidableObjects = [];
 
     class BaseObject {
@@ -40,7 +40,7 @@ let graphics = (function(){
         }
 
         update(){
-            let ctx = canvas.getContext('2d');
+            let ctx = graphics.canvas.element.getContext('2d');
             ctx.fillStyle = this.color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
@@ -65,7 +65,7 @@ let graphics = (function(){
             this.element.width = this.width;
             this.element.color = this.color;
 
-            canvasList.push(this);
+            graphics.canvas = this;
         }
 
         addObject(baseObject){
@@ -85,7 +85,7 @@ let graphics = (function(){
         Canvas,
         Square,
         objects,
-        canvasList,
+        canvas,
         BaseObject,
         collidableObjects
     }

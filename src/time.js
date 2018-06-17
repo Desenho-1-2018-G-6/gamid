@@ -20,11 +20,10 @@ let time = (function () {
         }
 
         updateGame(dt) {
-            for (let i in this.graphics.canvasList) {
-                // clear all canvasList
-                let ctx = this.graphics.canvasList[i].element.getContext('2d');
-                ctx.clearRect(0, 0, this.graphics.canvasList[i].width, this.graphics.canvasList[i].height);
-                this.graphics.canvasList[i].setBackgroundColor(this.graphics.canvasList[i].color);
+                // clear all canvas
+                let ctx = this.graphics.canvas.element.getContext('2d');
+                ctx.clearRect(0, 0, this.graphics.canvas.width, this.graphics.canvas.height);
+                this.graphics.canvas.setBackgroundColor(this.graphics.canvas.color);
 
                 // move all objects
                 for (let j in this.graphics.objects) {
@@ -40,8 +39,6 @@ let time = (function () {
                 // show fps
                 ctx.fillStyle = 'black';
                 ctx.fillText('fps:' + parseFloat(1/(dt/1000)).toFixed(2) + 'ms', 5, 10);
-            }
-
         }
 
     }

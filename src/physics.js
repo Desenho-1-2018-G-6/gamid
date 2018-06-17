@@ -79,8 +79,8 @@ let physics = (function() {
 
                 if(x < 0
                   || y < 0
-                  || x > (graphics.canvasList[0].width - width)
-                  || y > (graphics.canvasList[0].height - height)){
+                  || x > (graphics.canvas.width - width)
+                  || y > (graphics.canvas.height - height)){
                       this.baseObject.speedX *= -1;
                       this.baseObject.speedY *= -1;
                 }
