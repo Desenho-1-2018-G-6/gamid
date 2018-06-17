@@ -59,6 +59,7 @@ let physics = (function() {
     constructor(baseObject){
       super(baseObject);
       this.hasCollision = true; //boolean to resolve if object is collidable or not
+      this.hasBorderCollision = true;
     }
 
     beforeCollision(){
@@ -69,33 +70,49 @@ let physics = (function() {
       // Method  to overwrite
     }
 
+    beforeBorderCollision(){
+
+    }
+
+    afterBorderCollision(){
+
+    }
+
    
 
     resolveBorderCollision() {
-                let x = this.baseObject.x;
-                let y = this.baseObject.y;
-                let width = this.baseObject.width;
-                let height = this.baseObject.height;
-
-                let xVelocityDiff = this.baseObject.speedX;
-                let yVelocityDiff = this.baseObject.speedY;
-    
-                let xDist = this.baseObject.x;
-                let yDist = this.baseObject.y;
-    
-
-                  if(x < 0 && xVelocityDiff*xDist >=0
-                    || x > (graphics.canvas.width - width) && xVelocityDiff*(graphics.canvas.width - width) >=0){
-                        this.baseObject.speedX *= -1;
-                        // this.baseObject.speedY *= -1;
-                  }
-
-                  if(y < 0 && yVelocityDiff*yDist >=0
-                    || y > (graphics.canvas.height - height) && yVelocityDiff*(graphics.canvas.height - height) >=0){
-                      // this.baseObject.speedX *= -1;
-                      this.baseObject.speedY *= -1;
-                  }
               
+
+              let x = this.baseObject.x;
+              let y = this.baseObject.y;
+              let width = this.baseObject.width;
+              let height = this.baseObject.height;
+
+              let xVelocityDiff = this.baseObject.speedX;
+              let yVelocityDiff = this.baseObject.speedY;
+  
+              let xDist = this.baseObject.x;
+              let yDist = this.baseObject.y;
+
+                if(x < 0 && xVelocityDiff*xDist >=0
+                  || x > (graphics.canvas.width - width) && xVelocityDiff*(graphics.canvas.width - width) >=0){
+                    if(!this.hasBorderCollision){
+                      this.beforeBorderCollision(this.baseObject);
+                    }else{
+                      this.baseObject.speedX *= -1;
+                      this.afterBorderCollision(this.baseObject);
+                    }
+                }
+
+                if(y < 0 && yVelocityDiff*yDist >=0
+                  || y > (graphics.canvas.height - height) && yVelocityDiff*(graphics.canvas.height - height) >=0){
+                    if(!this.hasBorderCollision){
+                      this.beforeBorderCollision(this.baseObject);
+                    }else{
+                      this.baseObject.speedY *= -1;
+                      this.afterBorderCollision(this.baseObject);
+                    }
+                } 
     }
 
     resolveGravity(){
