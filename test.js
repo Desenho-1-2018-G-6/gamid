@@ -20,6 +20,12 @@ squarecollision.afterCollision = function(object, collided){
 		object.color = "blue";
 	}
 }
+
+squarecollision.afterBorderCollision = function(object){
+	object.color = "pink";
+	canvasInstance.deleteObject(object);
+}
+
 // new gamid.controller.Keyboard(
 // 		new gamid.graphics.Square(50, 50, 0, 0, 1, 'blue'),
 // 		[87, 65, 83, 68]

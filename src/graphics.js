@@ -72,6 +72,13 @@ let graphics = (function(){
           graphics.objects.push(baseObject);
         }
 
+        deleteObject(baseObject){
+            const index = graphics.objects.indexOf(baseObject);
+            if (index !== -1) {
+                graphics.objects.splice(index, 1);
+            }
+        }
+
         setBackgroundColor(color){
             this.color = color;
             this.element.color = this.color;
