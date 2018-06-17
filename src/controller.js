@@ -95,12 +95,10 @@ let controller = (function () {
 
     onKeyUp() {
       super.onKeyUp();
-      // console.log("Controller");
     }
 
     onKeyDown() {
       super.onKeyDown();
-      // console.log("Controller");
     }
   }
 
@@ -114,7 +112,7 @@ let controller = (function () {
 
     onKeyDown(event, functionList) {
       super.onKeyDown();
-      // console.log("Keyboard");
+
       for (let i in functionList) {
         if (event.keyCode == functionList[i].key) {
           functionList[i].onKeyDownFunc();
@@ -124,7 +122,7 @@ let controller = (function () {
 
     onKeyUp(event, functionList) {
       super.onKeyUp();
-      // console.log("Keyboard");
+
       for (let i in functionList) {
         if (event.keyCode == functionList[i].key) {
           functionList[i].onKeyUpFunc();

@@ -22,11 +22,11 @@ let graphics = (function(){
         }
 
         onKeyUp(){
-          // console.log('onKeyUp');
+
         }
 
         onKeyDown(){
-          // console.log('onKeyDown');
+
         }
     }
 

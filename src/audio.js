@@ -21,7 +21,6 @@ let audio = (function () {
         sound.setAttribute("preload", "auto");
         sound.setAttribute("control", "none");
         sound.style.display = "none";
-        // sound.accessKey = fileList[i];
         document.body.appendChild(sound);
     }
 

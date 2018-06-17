@@ -28,10 +28,8 @@ let time = (function () {
 
                 // move all objects
                 for (let j in this.graphics.objects) {
-                    // console.log(this.graphics.objects)
                     this.graphics.objects[j].newPosition(dt / 1000); // delta time in seconds
                     this.graphics.objects[j].update();
-                    // console.log(this.graphics.objects);
                 }
 
                 for(let z in this.graphics.collidableObjects){
