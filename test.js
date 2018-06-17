@@ -39,25 +39,25 @@ canvasInstance.addObject(square3);
 
 // a.setOnKeyUp(87, function(){square.speedY = 0});
 keyboard.setOnKeyDown(87, function(){
-		square.speedY = -100;
+		square.speedY = -500;
 		// square.speedX = 0;
 });
 
 // a.setOnKeyUp(83, function(){square.speedY = 0});
 keyboard.setOnKeyDown(83, function(){
-		square.speedY = 100;
+		square.speedY = 500;
 		// square.speedX = 0;
 });
 
 // a.setOnKeyUp(65, function(){square.speedX = 0});
 keyboard.setOnKeyDown(65, function(){
-		square.speedX = -100;
+		square.speedX = -500;
 		// square.speedY = 0;
 });
 
 // a.setOnKeyUp(68, function(){square.speedX = 0});
 keyboard.setOnKeyDown(68, function(){
-		square.speedX = 100;
+		square.speedX = 500;
 		// square.speedY = 0;
 });
 

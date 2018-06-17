@@ -7,11 +7,11 @@ for (let i = 0; i < 1000; i++){
 
     let a = new gamid.controller.Keyboard(square, [87, 65, 83, 68]);
     let squarecollision = new gamid.physics.SquareCollision(square);
-    squarecollision.afterCollision = function(collided){
+    squarecollision.afterCollision = function(object, collided){
         collided.width +=0.01;
         collided.height +=0.01;
-        square.width +=0.01;
-        square.height +=0.01;
+        object.width +=0.01;
+        object.height +=0.01;
     }
 
 canvasInstance.addObject(square);
