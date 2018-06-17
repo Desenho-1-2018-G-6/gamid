@@ -4,11 +4,21 @@ let canvas = canvasInstance.element;
 
 // square.speedX = 20;
 // square.speedY = 20;
-let square = new gamid.graphics.Square(50, 50, 0, 0, 1, 'blue');
+let square = new gamid.graphics.Square(50, 50, 0, 0, 50, 'blue');
 let keyboard = new gamid.controller.Keyboard(square, [87, 65, 83, 68]);
 let squarecollision = new gamid.physics.SquareCollision(square);
-squarecollision.afterCollision = function(baseObject){
-	baseObject.height += 10;
+squarecollision.afterCollision = function(object, collided){
+	if(collided.color == "black"){
+		collided.color = "red";
+	}else{
+		collided.color = "black"
+	}
+
+	if(object.color == "blue"){
+		object.color = "gray";
+	}else{
+		object.color = "blue";
+	}
 }
 // new gamid.controller.Keyboard(
 // 		new gamid.graphics.Square(50, 50, 0, 0, 1, 'blue'),
@@ -30,25 +40,25 @@ canvasInstance.addObject(square3);
 // a.setOnKeyUp(87, function(){square.speedY = 0});
 keyboard.setOnKeyDown(87, function(){
 		square.speedY = -100;
-		square.speedX = 0;
+		// square.speedX = 0;
 });
 
 // a.setOnKeyUp(83, function(){square.speedY = 0});
 keyboard.setOnKeyDown(83, function(){
 		square.speedY = 100;
-		square.speedX = 0;
+		// square.speedX = 0;
 });
 
 // a.setOnKeyUp(65, function(){square.speedX = 0});
 keyboard.setOnKeyDown(65, function(){
 		square.speedX = -100;
-		square.speedY = 0;
+		// square.speedY = 0;
 });
 
 // a.setOnKeyUp(68, function(){square.speedX = 0});
 keyboard.setOnKeyDown(68, function(){
 		square.speedX = 100;
-		square.speedY = 0;
+		// square.speedY = 0;
 });
 
 
