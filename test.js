@@ -7,7 +7,9 @@ let canvas = canvasInstance.element;
 let square = new gamid.graphics.Square(50, 50, 0, 0, 1, 'blue');
 let keyboard = new gamid.controller.Keyboard(square, [87, 65, 83, 68]);
 let squarecollision = new gamid.physics.SquareCollision(square);
-
+squarecollision.afterCollision = function(baseObject){
+	baseObject.height += 10;
+}
 // new gamid.controller.Keyboard(
 // 		new gamid.graphics.Square(50, 50, 0, 0, 1, 'blue'),
 // 		[87, 65, 83, 68]
@@ -16,8 +18,14 @@ let square2 = new gamid.graphics.Square(50, 50, 150, 150, 1, 'red');
 let keyboard2 = new gamid.controller.Keyboard(square2, [73, 74, 75, 76]);
 let square2collision = new gamid.physics.SquareCollision(square2);
 
+let square3 = new gamid.graphics.Square(50, 50, 300, 300, 1, 'red');
+let keyboard3 = new gamid.controller.Keyboard(square3, [73, 74, 75, 76]);
+let square3collision = new gamid.physics.SquareCollision(square3);
+
+
 canvasInstance.addObject(square);
 canvasInstance.addObject(square2);
+canvasInstance.addObject(square3);
 
 // a.setOnKeyUp(87, function(){square.speedY = 0});
 keyboard.setOnKeyDown(87, function(){

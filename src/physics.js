@@ -101,13 +101,15 @@ let physics = (function() {
     }
 
     checkDistance(){
-        for(let i in this.buildList){
+        for(let i in this.buildList) {
             if (this.baseObject === this.buildList[i].baseObject) continue;
               if(getDistance(this.baseObject, this.buildList[i].baseObject) <=1) {
+                this.beforeCollision(this.buildList[i].baseObject);
                 if(!this.hasCollision || !this.buildList[i].hasCollision){
                   // do nothing
-                }else{ 
+                } else { 
                   resolveObjectCollision(this.baseObject, this.buildList[i].baseObject);
+                  this.afterCollision(this.buildList[i].baseObject);
                 }
             }
         }
