@@ -77,13 +77,25 @@ let physics = (function() {
                 let width = this.baseObject.width;
                 let height = this.baseObject.height;
 
-                if(x < 0
-                  || y < 0
-                  || x > (graphics.canvas.width - width)
-                  || y > (graphics.canvas.height - height)){
-                      this.baseObject.speedX *= -1;
+                let xVelocityDiff = this.baseObject.speedX;
+                let yVelocityDiff = this.baseObject.speedY;
+    
+                let xDist = this.baseObject.x;
+                let yDist = this.baseObject.y;
+    
+
+                  if(x < 0 && xVelocityDiff*xDist >=0
+                    || x > (graphics.canvas.width - width) && xVelocityDiff*(graphics.canvas.width - width) >=0){
+                        this.baseObject.speedX *= -1;
+                        // this.baseObject.speedY *= -1;
+                  }
+
+                  if(y < 0 && yVelocityDiff*yDist >=0
+                    || y > (graphics.canvas.height - height) && yVelocityDiff*(graphics.canvas.height - height) >=0){
+                      // this.baseObject.speedX *= -1;
                       this.baseObject.speedY *= -1;
-                }
+                  }
+              
     }
 
     resolveGravity(){
