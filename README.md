@@ -21,7 +21,7 @@ Possuímos dois tipos de documentação. Uma documentação voltada para a parte
 Utilizamos a wiki do próprio GitHub para a documentação mais técnica. Ademais, utilizamos o GitHub-pages para a documentação de utilização da aplicação.
 
 * Documentação técnica do _framework_: https://github.com/Desenho-1-2018-G-6/gamid/wiki
-* Documentação sobre a utilizaço do **Gamid**: https://gamid-pages.herokuapp.com/gamid-pages
+* Documentação sobre a utilizaço do **Gamid**: https://gamid-gh-pages.herokuapp.com/
 * Repositório da documentação sobre a utilização: https://github.com/Desenho-1-2018-G-6/gamid-pages
 
 # Contribuição
